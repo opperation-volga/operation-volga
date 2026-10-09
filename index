@@ -1,161 +1,769 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ОПЕРАЦИЯ «ВОЛГА»</title>
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OPERATION VOLGA // CENTRAL ARCHIVE</title>
 
-    body {
-      margin: 0;
-      background: #080808;
-      color: #d9d9d9;
-      font-family: Consolas, "Courier New", monospace;
-    }
+<style>
+:root {
+  --bg: #080a0d;
+  --panel: #0e1218;
+  --line: #252c35;
+  --red: #d52d3b;
+  --text: #e6e9ed;
+  --muted: #78828f;
+  --mono: "Consolas", "Courier New", monospace;
+}
 
-    header {
-      padding: 28px 7%;
-      border-bottom: 1px solid #541111;
-      background: #0d0d0d;
-    }
+* { box-sizing: border-box; }
 
-    .classification {
-      color: #e33;
-      font-size: 12px;
-      letter-spacing: 3px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #18202a 0%, transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    h1 {
-      color: #e32626;
-      font-size: clamp(28px, 5vw, 52px);
-      letter-spacing: 3px;
-      margin: 18px 0 8px;
-    }
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .13;
+  background: repeating-linear-gradient(
+    0deg, transparent 0 3px, #ffffff08 4px
+  );
+  z-index: 10;
+}
 
-    .subtitle {
-      color: #888;
-      letter-spacing: 2px;
-    }
+button { font: inherit; }
 
-    main {
-      max-width: 900px;
-      margin: 45px auto;
-      padding: 0 22px;
-    }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.red { color: var(--red); }
 
-    .panel {
-      border: 1px solid #492020;
-      background: #0d0d0d;
-      padding: 22px;
-      margin-bottom: 22px;
-    }
+.topbar {
+  height: 66px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  background: #090c10e8;
+}
 
-    h2 {
-      color: #e33;
-      font-size: 17px;
-      font-weight: normal;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
 
-    .line {
-      color: #999;
-      line-height: 1.9;
-      overflow-wrap: anywhere;
-    }
+.emblem {
+  width: 29px;
+  height: 29px;
+  border: 1px solid var(--red);
+  display: grid;
+  place-items: center;
+  color: var(--red);
+  font-family: var(--mono);
+  transform: rotate(45deg);
+}
 
-    .red { color: #e33; }
-    .green { color: #70bd85; }
+.emblem span { transform: rotate(-45deg); }
 
-    .bar {
-      height: 3px;
-      background: #341010;
-      margin-top: 18px;
-    }
+.classification {
+  font: 10px var(--mono);
+  letter-spacing: 2px;
+  color: #b5bbc4;
+}
 
-    .bar span {
-      display: block;
-      width: 76%;
-      height: 100%;
-      background: #c22;
-    }
+.live-dot {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-right: 9px;
+  box-shadow: 0 0 10px #d52d3b80;
+}
 
-    footer {
-      border-top: 1px solid #351313;
-      padding: 24px;
-      text-align: center;
-      color: #666;
-      font-size: 12px;
-    }
+main {
+  width: min(1180px, 90%);
+  margin: auto;
+}
 
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 15px;
-      background: #e33;
-      vertical-align: middle;
-      animation: blink 1s steps(2) infinite;
-    }
+.hero {
+  padding: 70px 0 40px;
+  border-bottom: 1px solid var(--line);
+}
 
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-  </style>
+.eyebrow {
+  font: 10px var(--mono);
+  letter-spacing: 3px;
+  color: var(--red);
+  margin-bottom: 19px;
+}
+
+h1 {
+  font-size: clamp(38px, 7vw, 76px);
+  letter-spacing: -3px;
+  line-height: .98;
+  margin: 0;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: 20px;
+  color: #a0a8b2;
+  font: 12px var(--mono);
+  letter-spacing: 2px;
+}
+
+.hero-bottom {
+  margin-top: 35px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.description {
+  max-width: 520px;
+  color: #a2aab5;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.stamp {
+  border: 1px solid #69303a;
+  padding: 13px 18px;
+  color: #e45a65;
+  font: 10px var(--mono);
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+  white-space: nowrap;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0 15px;
+  font: 10px var(--mono);
+  letter-spacing: 2px;
+  color: #aab2bc;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 16px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #11161d, #0b0e13);
+  min-width: 0;
+}
+
+.panel-head {
+  min-height: 45px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  font: 10px var(--mono);
+  letter-spacing: 1.5px;
+}
+
+.panel-content { padding: 18px; }
+
+.map {
+  width: 100%;
+  display: block;
+  background:
+    linear-gradient(#18202a50 1px, transparent 1px),
+    linear-gradient(90deg, #18202a50 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.continent {
+  fill: #202a34;
+  stroke: #536170;
+  stroke-width: 1;
+}
+
+.route {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 5;
+  animation: routeFlow 8s linear infinite;
+}
+
+@keyframes routeFlow {
+  to { stroke-dashoffset: -100; }
+}
+
+.map-point {
+  fill: var(--red);
+  animation: pulse 2s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  50% { opacity: .45; transform: scale(.65); }
+}
+
+.map-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  color: var(--muted);
+  font: 10px var(--mono);
+}
+
+.globe-stage {
+  min-height: 290px;
+  display: grid;
+  place-items: center;
+  perspective: 650px;
+  overflow: hidden;
+  background: radial-gradient(ellipse, #202a3638, transparent 68%);
+}
+
+.globe {
+  width: 180px;
+  height: 180px;
+  border: 1px solid #637180;
+  border-radius: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 35px #c1d5e008, inset 0 0 35px #dce7f008;
+  animation: float 7s ease-in-out infinite;
+}
+
+.globe::before,
+.globe::after,
+.globe .longitude {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #536170;
+  border-radius: 50%;
+}
+
+.globe::before {
+  transform: rotateY(55deg);
+}
+
+.globe::after {
+  transform: rotateY(-55deg);
+}
+
+.globe .longitude {
+  transform: rotateX(65deg);
+}
+
+.globe .equator {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border-top: 1px solid #536170;
+}
+
+.globe .orbit {
+  position: absolute;
+  inset: -15px -32px;
+  border: 1px solid #d52d3b8c;
+  border-radius: 50%;
+  transform: rotate(-27deg) rotateX(58deg);
+}
+
+.globe .orbit-dot {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 13px var(--red);
+}
+
+@keyframes float {
+  0%, 100% { transform: rotateX(-8deg) rotateY(-12deg); }
+  50% { transform: rotateX(8deg) rotateY(12deg); }
+}
+
+.globe-label {
+  text-align: center;
+  margin-top: -5px;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: 2px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.stat {
+  padding: 19px;
+  border: 1px solid var(--line);
+  background: #0d1116;
+}
+
+.stat-label {
+  font: 9px var(--mono);
+  color: var(--muted);
+  letter-spacing: 1.5px;
+}
+
+.stat-value {
+  font-size: 22px;
+  margin: 13px 0 8px;
+  letter-spacing: -.5px;
+}
+
+.stat-note {
+  font: 10px var(--mono);
+  color: #737e8b;
+}
+
+.archive {
+  margin: 32px 0 50px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: #0d1116;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.archive h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.archive p {
+  margin: 0;
+  font: 11px/1.7 var(--mono);
+  color: var(--muted);
+}
+
+.enter {
+  border: 1px solid #a52b36;
+  background: #a51f2c;
+  color: white;
+  padding: 14px 20px;
+  cursor: pointer;
+  font: 10px var(--mono);
+  letter-spacing: 1.5px;
+  transition: background .2s, transform .2s;
+  white-space: nowrap;
+}
+
+.enter:hover {
+  background: #c72a39;
+  transform: translateY(-2px);
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 23px 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #65707c;
+  font: 9px var(--mono);
+  letter-spacing: 1px;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: #07090c;
+  display: grid;
+  place-items: center;
+  padding: 25px;
+  transition: opacity .8s, visibility .8s;
+}
+
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-inner {
+  width: min(460px, 100%);
+  text-align: center;
+}
+
+.intro-mark {
+  margin: 0 auto 30px;
+  width: 66px;
+  height: 66px;
+  border: 1px solid var(--red);
+  color: var(--red);
+  display: grid;
+  place-items: center;
+  font: 25px var(--mono);
+  transform: rotate(45deg);
+  animation: markIn 1s ease both;
+}
+
+.intro-mark span { transform: rotate(-45deg); }
+
+@keyframes markIn {
+  from { opacity: 0; transform: rotate(0deg) scale(.65); }
+  to { opacity: 1; transform: rotate(45deg) scale(1); }
+}
+
+.intro-kicker {
+  color: var(--red);
+  font: 10px var(--mono);
+  letter-spacing: 4px;
+}
+
+.intro h2 {
+  font-size: clamp(30px, 6vw, 44px);
+  font-weight: 500;
+  letter-spacing: 4px;
+  margin: 17px 0 10px;
+}
+
+.intro-sub {
+  font: 10px var(--mono);
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.loading-track {
+  margin: 35px 0 14px;
+  height: 2px;
+  background: #252a31;
+  overflow: hidden;
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0;
+  background: var(--red);
+  animation: load 3.2s ease forwards;
+}
+
+@keyframes load { to { width: 100%; } }
+
+.intro-status {
+  display: flex;
+  justify-content: space-between;
+  font: 10px var(--mono);
+  color: #8d97a3;
+}
+
+.skip {
+  margin-top: 34px;
+  background: transparent;
+  border: 1px solid #343b45;
+  color: #aab2bc;
+  padding: 12px 19px;
+  cursor: pointer;
+  font: 10px var(--mono);
+  letter-spacing: 1.5px;
+}
+
+.skip:hover { border-color: var(--red); color: white; }
+
+@media (max-width: 760px) {
+  .dashboard { grid-template-columns: 1fr; }
+  .hero-bottom { align-items: start; flex-direction: column; }
+  .stamp { align-self: start; }
+  .stats { grid-template-columns: 1fr; }
+  .archive { align-items: start; flex-direction: column; }
+  .topbar { padding: 0 5%; }
+  .classification { font-size: 8px; }
+  footer { flex-direction: column; }
+  h1 { letter-spacing: -1.5px; }
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="classification">СОВЕРШЕННО СЕКРЕТНО // TOP SECRET</div>
-    <h1>ОПЕРАЦИЯ «ВОЛГА»</h1>
-    <div class="subtitle">ЦЕНТРАЛЬНЫЙ АРХИВ // CENTRAL ARCHIVE</div>
-  </header>
 
-  <main>
-    <section class="panel">
-      <h2>[ СИСТЕМНЫЙ СТАТУС / SYSTEM STATUS ]</h2>
-      <div class="line">Инициализация интерфейса... <span class="green">OK</span></div>
-      <div class="line">Загрузка архива... <span class="green">OK</span></div>
-      <div class="line">Соединение: <span class="green">УСТАНОВЛЕНО</span></div>
-      <div class="line">Режим: <span class="red">ЗАСЕКРЕЧЕНО</span></div>
-      <div class="bar"><span></span></div>
-    </section>
+<!-- Cinematic opening sequence -->
+<section class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="intro-mark"><span>V</span></div>
+    <div class="intro-kicker">CENTRAL ARCHIVE</div>
+    <h2>ОПЕРАЦИЯ «ВОЛГА»</h2>
+    <div class="intro-sub">OPERATION VOLGA // E</div>
 
-    <section class="panel">
-      <h2>[ ОПЕРАТИВНАЯ ЗАПИСКА / FIELD NOTE ]</h2>
-      <p class="line">
-        Добро пожаловать, оператор.<br>
-        Welcome, operator.
+    <div class="loading-track">
+      <div class="loading-bar"></div>
+    </div>
+
+    <div class="intro-status">
+      <span id="status">INITIALIZING INTERFACE</span>
+      <span id="percent">00%</span>
+    </div>
+
+    <button class="skip" onclick="enterArchive()">
+      ENTER ARCHIVE →
+    </button>
+  </div>
+</section>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="emblem"><span>V</span></div>
+    <span>VOLGA <span class="muted">/ ARCHIVE</span></span>
+  </div>
+  <div class="classification">
+    <span class="live-dot"></span> OPPERATION VOLGA
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">DOSSIER № 001 — CENTRAL DIRECTORATE</div>
+    <h1>ОПЕРАЦИЯ<br>«ВОЛГА»</h1>
+    <div class="subtitle">OPERATION VOLGA / STRATEGIC ARCHIVE</div>
+
+    <div class="hero-bottom">
+      <div class="description">
+      ДОСТУП К ЦЕНТРАЛЬНОМУ АРХИВУ
+
+CENTRAL DIRECTORATE // SECURE ACCESS
+
+ВНИМАНИЕ: ДОСТУП К МАТЕРИАЛАМ ДАННОГО ДОСЬЕ ОГРАНИЧЕН.
+
+AUTHORIZED PERSONNEL ONLY.
+
+      </div>
+      <div class="stamp">СЕКРЕТНО / CLASSIFIED STYLE</div>
+    </div>
+  </section>
+
+  <div class="section-heading">
+    <span>01 / GLOBAL OVERVIEW</span>
+    <span class="red">SIMULATION MODE</span>
+  </div>
+
+  <section class="dashboard">
+    <div class="panel">
+      <div class="panel-head">
+        <span>WORLD ACTIVITY MAP</span>
+        <span class="red">● DEMO</span>
+      </div>
+
+      <div class="panel-content">
+        <!-- Vector map drawn entirely with SVG -->
+        <svg class="map" viewBox="0 0 600 300"
+             role="img" aria-label="Decorative fictional world map">
+          <g class="continent">
+            <path d="M35 68 L57 48 91 40 115 52 139 48 160 70
+              146 89 121 94 109 115 89 123 78 151 58 137
+              51 111 36 96Z"/>
+            <path d="M135 153 L157 159 175 181 166 212
+              153 246 140 224 143 198 127 177Z"/>
+            <path d="M244 67 L264 52 286 57 296 73 283 91
+              264 90Z"/>
+            <path d="M270 101 L302 88 328 102 340 127
+              326 155 310 178 296 211 280 198 272 168
+              256 143 257 119Z"/>
+            <path d="M305 61 L346 42 392 47 416 61 448 59
+              474 75 510 79 548 104 536 128 503 133
+              477 119 454 130 428 119 403 135 382 123
+              354 132 334 113 312 99Z"/>
+            <path d="M465 173 L486 161 512 172 520 191
+              500 208 480 199Z"/>
+            <path d="M546 232 L555 226 564 237 556 248Z"/>
+          </g>
+
+          <g>
+            <path class="route" d="M103 91 Q210 18 318 111"/>
+            <path class="route" d="M318 111 Q385 70 473 99"/>
+            <path class="route" d="M318 111 Q365 174 493 186"/>
+            <path class="route" d="M103 91 Q104 161 151 195"/>
+          </g>
+
+          <g>
+            <circle class="map-point" cx="103" cy="91" r="4"/>
+            <circle class="map-point" cx="318" cy="111" r="4"/>
+            <circle class="map-point" cx="473" cy="99" r="4"/>
+            <circle class="map-point" cx="493" cy="186" r="4"/>
+            <circle class="map-point" cx="151" cy="195" r="4"/>
+          </g>
+
+          <g fill="#a6b0bc" font-family="monospace" font-size="9">
+            <text x="24" y="22">NORTH ATLANTIC</text>
+            <text x="355" y="22">EURASIA</text>
+            <text x="22" y="285">PROJECTION: DECORATIVE / NOT NAVIGATIONAL</text>
+            <text x="325" y="128" fill="#e45a65">NODE B</text>
+            <text x="482" y="88" fill="#e45a65">NODE C</text>
+          </g>
+        </svg>
+
+        <div class="map-caption">
+          <span>ROUTE OVERLAY: ENABLED</span>
+          <span>DATA: READY</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <span>ORBITAL DISPLAY</span>
+        <span class="muted">01 / 03</span>
+      </div>
+
+      <div class="globe-stage">
+        <div class="globe">
+          <div class="longitude"></div>
+          <div class="equator"></div>
+          <div class="orbit"><div class="orbit-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="globe-label">THREE-DIMENSIONAL CSS MODEL</div>
+      <div style="height:20px"></div>
+    </div>
+  </section>
+
+  <div class="section-heading">
+    <span>02 / OPERATIONAL SUMMARY</span>
+    <span class="muted">DEMO VALUES</span>
+  </div>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-label">ARCHIVE STATUS</div>
+      <div class="stat-value">ONLINE</div>
+      <div class="stat-note"><span class="red">●</span> INTERFACE READY</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ACTIVE ROUTES</div>
+      <div class="stat-value">04</div>
+      <div class="stat-note"ROUTE OVERLAY: ACTIVE</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">SECURITY LEVEL</div>
+      <div class="stat-value">VOLGA-01</div>
+      <div class="stat-note">ACCESS LEVEL: RESTRICTED</div>
+    </div>
+  </section>
+
+  <section class="archive">
+    <div>
+      <h2>ЦЕНТРАЛЬНЫЙ АРХИВ</h2>
+      <p>
+        CENTRAL ARCHIVE / DOSSIER ACCESS<br>
+        Select below to reveal the next section.
       </p>
-      <p class="line">
-        Архив подготовлен к просмотру.<br>
-        The archive is ready for review.
-      </p>
-      <p class="line red">ОЖИДАНИЕ ВВОДА... <span class="cursor"></span></p>
-    </section>
+    </div>
+    <button class="enter" onclick="revealDossier()">
+      OPEN DOSSIER &nbsp; →
+    </button>
+  </section>
 
-    <section class="panel">
-      <h2>[ КАРТА ОПЕРАЦИИ / OPERATION MAP ]</h2>
-      <svg viewBox="0 0 700 180" width="100%" role="img"
-           aria-label="Fictional abstract red operation map">
-        <rect width="700" height="180" fill="#090909"/>
-        <g stroke="#351616" stroke-width="1">
-          <path d="M0 30H700 M0 60H700 M0 90H700 M0 120H700 M0 150H700"/>
-          <path d="M70 0V180 M140 0V180 M210 0V180 M280 0V180 M350 0V180 M420 0V180 M490 0V180 M560 0V180 M630 0V180"/>
-        </g>
-        <g fill="none" stroke="#a22" stroke-width="2">
-          <path d="M90 130 L180 80 L300 110 L390 45 L510 70 L610 30"/>
-          <circle cx="180" cy="80" r="6"/>
-          <circle cx="390" cy="45" r="6"/>
-          <circle cx="510" cy="70" r="6"/>
-        </g>
-        <g fill="#e55" font-family="monospace" font-size="11">
-          <text x="20" y="20">СЕКТОР 07</text>
-          <text x="400" y="165">СХЕМА / SIMULATED</text>
-        </g>
-      </svg>
-      <p class="line">Схематическая карта — вымышленная визуализация.</p>
-    </section>
-  </main>
+  <section class="panel" id="dossier"
+           style="display:none; margin-bottom:40px">
+    <div class="panel-head">
+      <span>DOSSIER 001</span>
+      <span class="red">ARCHIVE OPENED</span>
+    </div>
+    <div class="panel-content">
+      <div class="eyebrow">КОНЕЦ ПЕРВОГО ЭТАПА / PHASE ONE</div>
+      <h2 style="font-weight:500; margin:0 0 12px">
+        The briefing begins here.
+      </h2>
+      <p class="muted" style="line-height:1.8; font-size:14px">
+              </p>
+    </div>
+  </section>
+</main>
 
-  <footer>ОПЕРАЦИЯ «ВОЛГА» · УЧЕБНЫЙ ИНТЕРФЕЙС</footer>
+<footer>
+  <span>VOLGA ARCHIVE / CENTRAL DIRECTORATE</span>
+  <span>VOLGA ARCHIVE // EST. 1998</span>
+  <span>END OF TRANSMISSION</span>
+</footer>
+
+<script>
+const intro = document.getElementById("intro");
+const statusText = document.getElementById("status");
+const percentText = document.getElementById("percent");
+
+const stages = [
+  "INITIALIZING INTERFACE",
+  "LOADING ARCHIVE DISPLAY",
+  "PREPARING BRIEFING",
+  "INTERFACE READY"
+];
+
+let entered = false;
+let startTime = Date.now();
+
+function updateIntro() {
+  if (entered) return;
+
+  const elapsed = Date.now() - startTime;
+  const progress = Math.min(100, Math.floor(elapsed / 32));
+
+  percentText.textContent =
+    String(progress).padStart(2, "0") + "%";
+
+  const stageIndex = Math.min(
+    stages.length - 1,
+    Math.floor(progress / 26)
+  );
+
+  statusText.textContent = stages[stageIndex];
+
+  if (progress >= 100) {
+    enterArchive();
+  } else {
+    requestAnimationFrame(updateIntro);
+  }
+}
+
+function enterArchive() {
+  if (entered) return;
+  entered = true;
+  intro.classList.add("hidden");
+}
+
+function revealDossier() {
+  const dossier = document.getElementById("dossier");
+  dossier.style.display = "block";
+  dossier.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+requestAnimationFrame(updateIntro);
+</script>
+
 </body>
 </html>
