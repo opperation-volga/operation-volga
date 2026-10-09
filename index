@@ -616,8 +616,8 @@ AUTHORIZED PERSONNEL ONLY.
           <g fill="#a6b0bc" font-family="monospace" font-size="9">
             <text x="24" y="22">NORTH ATLANTIC</text>
             <text x="355" y="22">EURASIA</text>
-            <text x="22" y="285">PROJECTION: DECORATIVE / NOT NAVIGATIONAL</text>
-            <text x="325" y="128" fill="#e45a65">NODE B</text>
+            <text x="22" y="285">PROJECTION: READY</text>
+            <text x="325" y="128" fill="#e45a65">NODE B</text>	
             <text x="482" y="88" fill="#e45a65">NODE C</text>
           </g>
         </svg>
@@ -643,7 +643,7 @@ AUTHORIZED PERSONNEL ONLY.
         </div>
       </div>
 
-      <div class="globe-label">THREE-DIMENSIONAL CSS MODEL</div>
+      <div class="globe-label"></div>
       <div style="height:20px"></div>
     </div>
   </section>
