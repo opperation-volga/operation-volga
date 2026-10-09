@@ -1,1 +1,161 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ОПЕРАЦИЯ «ВОЛГА»</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #080808;
+      color: #d9d9d9;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    header {
+      padding: 28px 7%;
+      border-bottom: 1px solid #541111;
+      background: #0d0d0d;
+    }
+
+    .classification {
+      color: #e33;
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      color: #e32626;
+      font-size: clamp(28px, 5vw, 52px);
+      letter-spacing: 3px;
+      margin: 18px 0 8px;
+    }
+
+    .subtitle {
+      color: #888;
+      letter-spacing: 2px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 45px auto;
+      padding: 0 22px;
+    }
+
+    .panel {
+      border: 1px solid #492020;
+      background: #0d0d0d;
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      color: #e33;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+    .line {
+      color: #999;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .red { color: #e33; }
+    .green { color: #70bd85; }
+
+    .bar {
+      height: 3px;
+      background: #341010;
+      margin-top: 18px;
+    }
+
+    .bar span {
+      display: block;
+      width: 76%;
+      height: 100%;
+      background: #c22;
+    }
+
+    footer {
+      border-top: 1px solid #351313;
+      padding: 24px;
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: #e33;
+      vertical-align: middle;
+      animation: blink 1s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="classification">СОВЕРШЕННО СЕКРЕТНО // TOP SECRET</div>
+    <h1>ОПЕРАЦИЯ «ВОЛГА»</h1>
+    <div class="subtitle">ЦЕНТРАЛЬНЫЙ АРХИВ // CENTRAL ARCHIVE</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>[ СИСТЕМНЫЙ СТАТУС / SYSTEM STATUS ]</h2>
+      <div class="line">Инициализация интерфейса... <span class="green">OK</span></div>
+      <div class="line">Загрузка архива... <span class="green">OK</span></div>
+      <div class="line">Соединение: <span class="green">УСТАНОВЛЕНО</span></div>
+      <div class="line">Режим: <span class="red">ЗАСЕКРЕЧЕНО</span></div>
+      <div class="bar"><span></span></div>
+    </section>
+
+    <section class="panel">
+      <h2>[ ОПЕРАТИВНАЯ ЗАПИСКА / FIELD NOTE ]</h2>
+      <p class="line">
+        Добро пожаловать, оператор.<br>
+        Welcome, operator.
+      </p>
+      <p class="line">
+        Архив подготовлен к просмотру.<br>
+        The archive is ready for review.
+      </p>
+      <p class="line red">ОЖИДАНИЕ ВВОДА... <span class="cursor"></span></p>
+    </section>
+
+    <section class="panel">
+      <h2>[ КАРТА ОПЕРАЦИИ / OPERATION MAP ]</h2>
+      <svg viewBox="0 0 700 180" width="100%" role="img"
+           aria-label="Fictional abstract red operation map">
+        <rect width="700" height="180" fill="#090909"/>
+        <g stroke="#351616" stroke-width="1">
+          <path d="M0 30H700 M0 60H700 M0 90H700 M0 120H700 M0 150H700"/>
+          <path d="M70 0V180 M140 0V180 M210 0V180 M280 0V180 M350 0V180 M420 0V180 M490 0V180 M560 0V180 M630 0V180"/>
+        </g>
+        <g fill="none" stroke="#a22" stroke-width="2">
+          <path d="M90 130 L180 80 L300 110 L390 45 L510 70 L610 30"/>
+          <circle cx="180" cy="80" r="6"/>
+          <circle cx="390" cy="45" r="6"/>
+          <circle cx="510" cy="70" r="6"/>
+        </g>
+        <g fill="#e55" font-family="monospace" font-size="11">
+          <text x="20" y="20">СЕКТОР 07</text>
+          <text x="400" y="165">СХЕМА / SIMULATED</text>
+        </g>
+      </svg>
+      <p class="line">Схематическая карта — вымышленная визуализация.</p>
+    </section>
+  </main>
+
+  <footer>ОПЕРАЦИЯ «ВОЛГА» · УЧЕБНЫЙ ИНТЕРФЕЙС</footer>
+</body>
+</html>
